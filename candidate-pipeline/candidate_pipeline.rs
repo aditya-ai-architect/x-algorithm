@@ -323,7 +323,12 @@ where
                 .iter()
                 .filter(|se| se.enable(input.query.clone()))
                 .map(|se| se.run(input.clone()));
-            let _ = join_all(futures).await;
+            let results = join_all(futures).await;
+            for result in results {
+                if let Err(err) = result {
+                    error!("Side effect failed: {}", err);
+                }
+            }
         });
     }
 }
