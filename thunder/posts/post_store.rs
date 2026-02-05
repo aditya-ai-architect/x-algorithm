@@ -467,7 +467,7 @@ impl PostStore {
 
             total_trimmed += trim_map(&original_posts_by_user, &posts_map, &deleted_posts);
             total_trimmed += trim_map(&secondary_posts_by_user, &posts_map, &deleted_posts);
-            trim_map(&video_posts_by_user, &posts_map, &deleted_posts);
+            total_trimmed += trim_map(&video_posts_by_user, &posts_map, &deleted_posts);
 
             total_trimmed
         })
